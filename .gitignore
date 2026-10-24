@@ -37,15 +37,23 @@ wheels/
 *.swo
 .DS_Store
 
-# Data & Models (keep folders via .gitkeep, ignore data dumps)
+# Data & Models
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/student_lifestyle_dataset.csv
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/*.csv
 models/*
 !models/.gitkeep
+!models/*.joblib
 reports/figures/*
 !reports/figures/.gitkeep
+!reports/figures/*.png
+reports/metrics/*
+!reports/metrics/.gitkeep
+!reports/metrics/*.json
+!reports/model_comparison.csv
 
 # Testing & Coverage
 .coverage

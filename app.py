@@ -62,19 +62,20 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Check model availability
+# Ensure model artifacts exist or train automatically
 model_file = Path("models/best_model.joblib")
 prep_file = Path("models/preprocessor.joblib")
 
-if not (model_file.exists() and prep_file.exists()):
-    st.error("⚠️ Trained model artifacts not found. Please run training first:")
-    st.code("python3 -m src.models.train", language="bash")
-    st.stop()
-
-# Load Predictor
-try:
+@st.cache_resource(show_spinner="Training machine learning models...")
+def load_or_train_predictor():
+    if not (model_file.exists() and prep_file.exists()):
+        from src.models.train import train_and_evaluate_all
+        train_and_evaluate_all()
     from src.models.predict import StressPredictor
-    predictor = StressPredictor()
+    return StressPredictor()
+
+try:
+    predictor = load_or_train_predictor()
 except Exception as e:
     st.error(f"Error initializing ML model: {e}")
     st.stop()
