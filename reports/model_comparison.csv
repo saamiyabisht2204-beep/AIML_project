@@ -1,0 +1,4 @@
+Model,Accuracy,Precision (Macro),Recall (Macro),F1-Score (Macro)
+logistic_regression,0.8475,0.8437,0.8548,0.8484
+decision_tree,1.0,1.0,1.0,1.0
+random_forest,1.0,1.0,1.0,1.0

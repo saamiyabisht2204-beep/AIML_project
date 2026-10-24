@@ -1,0 +1,62 @@
+project_name: "student_stress_prediction"
+version: "1.0.0"
+
+dataset:
+  name: "Student Lifestyle Dataset"
+  source: "OpenML / Kaggle (Sumit Kumar / Israel Campero Jurado)"
+  openml_id: 46752
+  license: "Apache 2.0"
+  raw_path: "data/raw/student_lifestyle_dataset.csv"
+  processed_train_path: "data/processed/train.csv"
+  processed_test_path: "data/processed/test.csv"
+  id_column: "Student_ID"
+  target_column: "Stress_Level"
+  target_classes:
+    - "Low"
+    - "Moderate"
+    - "High"
+  features:
+    numerical:
+      - "Study_Hours_Per_Day"
+      - "Extracurricular_Hours_Per_Day"
+      - "Sleep_Hours_Per_Day"
+      - "Social_Hours_Per_Day"
+      - "Physical_Activity_Hours_Per_Day"
+      - "GPA"
+    categorical: []
+
+split:
+  test_size: 0.2
+  random_state: 42
+  stratify: true
+
+scaling:
+  method: "standard" # standard or minmax
+
+models:
+  logistic_regression:
+    max_iter: 1000
+    random_state: 42
+    multi_class: "multinomial"
+  decision_tree:
+    max_depth: 6
+    min_samples_split: 5
+    criterion: "gini"
+    random_state: 42
+  random_forest:
+    n_estimators: 100
+    max_depth: 8
+    min_samples_split: 4
+    random_state: 42
+
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision_macro"
+    - "recall_macro"
+    - "f1_macro"
+
+artifacts:
+  model_dir: "models/"
+  metrics_dir: "reports/metrics/"
+  figures_dir: "reports/figures/"
