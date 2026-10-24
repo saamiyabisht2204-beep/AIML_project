@@ -59,3 +59,5 @@ pip install -r requirements.txt
 - **Exploratory Data Analysis:** Run notebooks in `notebooks/`
 - **Training & Evaluation:** Use `src/models/` modules with parameters governed by `configs/config.yaml`
 - **Interactive UI:** Run `streamlit run app.py` (when UI is implemented)
+
+### Interactive UI on stresmlit : https://aimlproject-x6khjlpwdfld3dbcftjqha.streamlit.app/
